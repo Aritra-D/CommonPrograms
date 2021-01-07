@@ -149,7 +149,7 @@ function [allTrials,goodTrials,stimData,eyeData,eyeRangeMS] = getEyePositionAndB
 if ~exist('Fs','var');                  Fs = 200;                       end    % Eye position sampled at 200 Hz.
 if ~exist('fixationMode','var'); fixationMode = 0; end
 
-datFileName = fullfile(folderSourceString,'data','rawData',[subjectName expDate],[subjectName expDate protocolName '.dat']);
+datFileName = fullfile(folderSourceString,'data','rawData',subjectName,[subjectName expDate],[subjectName expDate protocolName '.dat']);
 
 % Get Lablib data
 header = readLLFile('i',datFileName);
@@ -348,7 +348,7 @@ end
 function [eyeXAllPos,eyeYAllPos,xs,durationsMS] = getEyeDataStimPosGRF(subjectName,expDate,protocolName,folderSourceString,FsEye,fixationMode)
 
 intervalTimeMS=1000/FsEye;
-datFileName = fullfile(folderSourceString,'data','rawData',[subjectName expDate],[subjectName expDate protocolName '.dat']);
+datFileName = fullfile(folderSourceString,'data','rawData',subjectName,[subjectName expDate],[subjectName expDate protocolName '.dat']);
 
 % Get Lablib data
 header = readLLFile('i',datFileName);

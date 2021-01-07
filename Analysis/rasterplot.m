@@ -158,7 +158,7 @@ end
 symbol = [ls mark col]; % Use marker only on data part
 esymbol = ['-' col]; % Make sure bars are solid
 
-h = plot(xb,yb,esymbol); hold on
+h = plot(xb,yb,esymbol,'LineWidth',1.5); hold on
 
 if ~hold_state, hold off; end
 

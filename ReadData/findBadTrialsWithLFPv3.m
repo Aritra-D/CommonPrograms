@@ -124,8 +124,8 @@ else
 end
 
 thresholdMarginal = threshold; % thresholdMarginal i.e. values> u+thresholdMarginal*sigma will be tagged as bad 
-badTrialsMarginalStats = find(marginalStim>=(mean(marginalStim)+std(marginalStim)*thresholdMarginal));
-badElecsMarginalStats = find(marginalElectrodes(electrodesForMarginals)>=(mean(marginalElectrodes(electrodesForMarginals))+std(marginalElectrodes(electrodesForMarginals))*thresholdMarginal));
+badTrialsMarginalStats = find(marginalStim>(mean(marginalStim)+std(marginalStim)*thresholdMarginal)); % Note that it was greater than equal in the previous version; if the selected electrodes do not have any bad trials; the greater than equal condition will make all the trials as bad!
+badElecsMarginalStats = find(marginalElectrodes(electrodesForMarginals)>(mean(marginalElectrodes(electrodesForMarginals))+std(marginalElectrodes(electrodesForMarginals))*thresholdMarginal));
 
 badTrials = unique(cat(2,badTrials,badTrialsMarginalStats));
 badElecs = badElecsMarginalStats;
@@ -143,9 +143,16 @@ for i=1:numElectrodes
     end
 end
 
+% folderSave = 'E:\Projects\Aritra_PlaidNormalizationProject\badTrials'; %
+% use folderSave if need to be saved in single folder and change the
+% variable folderSegment to folderSave accordingly while saving bad trial
+% File
+% if ~exist(folderSave,'dir')
+%     mkdir(folderSave)
+% end
 if saveDataFlag
     disp(['Saving ' num2str(length(badTrials)) ' bad trials']);
-    save(fullfile(folderSegment,'badTrials.mat'),'badTrials','checkTheseElectrodes','threshold','maxLimit','minLimit','checkPeriod','allBadTrials','nameElec','rejectTolerance','badElecs','badTrialsMarginalStats');
+    save(fullfile(folderSegment,[monkeyName expDate protocolName '_badTrials.mat']),'badTrials','checkTheseElectrodes','threshold','maxLimit','minLimit','checkPeriod','allBadTrials','nameElec','rejectTolerance','badElecs','badTrialsMarginalStats');
 else
     disp('Bad trials will not be saved..');
 end
@@ -222,7 +229,7 @@ end
 view([90 -90]);
 
 saveas(summaryFig,fullfile(folderSegment,[monkeyName expDate protocolName 'summmaryBadTrials.fig']),'fig');
-saveas(summaryFig,[monkeyName expDate protocolName 'summmaryBadTrials.fig'],'fig');
+% saveas(summaryFig,[monkeyName expDate protocolName 'summmaryBadTrials.fig'],'fig');
 
 %**************************************************************************
 % fill the badTrials summary sheet
