@@ -41,6 +41,8 @@ if strcmpi(gridType,'EEG')
             28 60 00 61 00 62 00 63 00 64 32;
             00 00 00 29 00 30 00 31 00 00 00];
         
+        
+        
     elseif gridLayout == 3 % 10-20 system
         electrodeArray = ...
             [00 00 00 01 00 02 00 00 00 00;
@@ -65,14 +67,23 @@ if strcmpi(gridType,'EEG')
         %              '   ' '   ' '   ' 'O1' '   ' 'O2' '   ' '   ' '   ' '   '];
     
     elseif gridLayout == 4  % coco EEG
-        electrodeArray = ...
+%         electrodeArray = ...
+%             [00 00 00 00 00 00 00 00 00 ;
+%              00 00 00 00 00 00 00 00 00 ;
+%              00 00 00 00 00 00 00 00 00 ;
+%              00 00 00 00 00 00 00 00 00 ;
+%              10 00 00 00 00 00 00 00 11 ;
+%              00 07 00 06 00 08 00 09 00 ;
+%              03 00 02 00 01 00 04 00 05];
+         
+                 electrodeArray = ...
             [00 00 00 00 00 00 00 00 00 ;
              00 00 00 00 00 00 00 00 00 ;
              00 00 00 00 00 00 00 00 00 ;
              00 00 00 00 00 00 00 00 00 ;
-             10 00 00 00 00 00 00 00 11 ;
-             00 07 00 06 00 08 00 09 00 ;
-             03 00 02 00 01 00 04 00 05];
+             12 00 00 00 00 00 00 00 13 ;
+             00 09 00 08 00 10 00 11 00 ;
+             05 00 04 00 03 00 06 00 07];
          
 %          electrodeArray = ...           %20 Channel montage Alpa  
 %             [00 17 00 00 00 00 00 18 00 ;
@@ -92,6 +103,33 @@ if strcmpi(gridType,'EEG')
              106 00 00 00 00 00 00 00 107 ;
              00 103 00 102 00 104 00 105 00 ;
              99 00 98 00 97 00 100 00 101];
+         
+     elseif gridLayout == 6 % 8-channel montage used by Liza for DualTFEEGProject
+        electrodeArray = ...
+            [00 00 00 00 00 00 00 00 00 00 00
+            00 00 00 00 00 00 00 00 00 00 00
+            00 00 00 00 00 00 00 00 00 00 00
+            00 00 00 00 00 00 00 00 00 00 00
+            00 00 00 00 00 00 00 00 00 00 00
+            00 00 00 00 00 00 00 00 00 00 00
+            00 00 00 00 00 00 00 00 00 00 00;
+            00 01 00 02 00 03 00 04 00 05 00;
+            00 00 00 06 00 07 00 08 00 00 00];  
+         
+    elseif gridLayout == 7 % 19-channel montage used by Aritra for CRFAttentionProject
+        electrodeArray = ...
+            [00 01 02 03 04 05 06 07 08 09 00;
+            10 11 00 12 00 13 00 14 00 15 16;
+            00 00 00 17 00 18 00 19 00 00 00];
+%             [00 00 00 00 00 00 00 00 00 00 00
+%             00 00 00 00 00 00 00 00 00 00 00
+%             00 00 00 00 00 00 00 00 00 00 00
+%             00 00 00 00 00 00 00 00 00 00 00
+%             00 00 00 00 00 00 00 00 00 00 00
+%             00 00 00 00 00 00 00 00 00 00 00
+%             00 01 02 03 04 05 06 07 08 09 00;
+%             10 11 00 12 00 13 00 14 00 15 16;
+%             00 00 00 17 00 18 00 19 00 00 00];
     end
     
     if electrodeNum<1 || electrodeNum>96
@@ -119,7 +157,7 @@ if strcmpi(gridType,'Microelectrode')
             79 80 84 86 87 89 91 94 63 95;
             00 81 83 85 88 90 92 93 96 00];
         
-    elseif strcmp(subjectName,'alpa') || strcmp(subjectName,'kesari') || isempty(subjectName)
+    elseif strcmp(subjectName,'alpa') || strcmp(subjectName,'kesari') || strcmp(subjectName,'coco') || isempty(subjectName)
         
         electrodeArray = ...
             [00 88 78 68 58 48 38 28 18 00;
@@ -133,7 +171,7 @@ if strcmpi(gridType,'Microelectrode')
             89 80 70 60 50 40 30 20 10 01;
             00 79 69 59 49 39 29 19 09 00];
         
-    elseif strcmp(subjectName,'coco') || strcmp(subjectName,'dona')
+    elseif strcmp(subjectName,'dona')
         
         electrodeArray = ...
             [96 90 84 78 72 66 60 54;

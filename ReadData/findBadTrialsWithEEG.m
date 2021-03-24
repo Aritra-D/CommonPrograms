@@ -275,8 +275,10 @@ if ~isempty(FsEye)
     eyeDataDegX = eyeData.eyeDataDegX;
     eyeDataDegY = eyeData.eyeDataDegY;
     
+    if iscell(eyeDataDegX) && iscell(eyeDataDegY)
     eyeDataDegX = concatenateCellArrayToMatrix(eyeDataDegX)';
     eyeDataDegY = concatenateCellArrayToMatrix(eyeDataDegY)';
+    end
     
     eyeData.eyeDataDegX = eyeDataDegX;
     eyeData.eyeDataDegY = eyeDataDegY;
@@ -316,3 +318,15 @@ for iCol = 1:cols
     newMatrix(:,iCol) = vector;
 end
 end
+function vector = resizeVector(vector,numRowsElement)
+if size(vector,1)>=numRowsElement
+    vector = vector(1:numRowsElement);
+elseif size(vector,1)<numRowsElement
+    lastElementIdx = size(vector,1);
+    lastElement = vector(end);
+    for i = 1:numRowsElement-size(vector,1)
+        vector(lastElementIdx+i) = lastElement;
+    end
+end
+end
+

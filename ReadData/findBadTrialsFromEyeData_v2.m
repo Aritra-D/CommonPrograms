@@ -2,7 +2,7 @@
 
 function badEyeTrials = findBadTrialsFromEyeData_v2(eyeDataDeg,eyeRangeMS,FsEye,checkPeriod,fixationWindowWidth)
 
-    if ~exist('fixationWindowWidth','var');         fixationWindowWidth = 5;           end
+    if ~exist('fixationWindowWidth','var');         fixationWindowWidth = 4;           end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     eyeDataDegX = eyeDataDeg.eyeDataDegX;

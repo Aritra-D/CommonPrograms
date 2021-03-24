@@ -19,11 +19,12 @@
 function LLFileExistsFlag = saveLLData(subjectName,expDate,protocolName,folderSourceString,gridType,frameRate,folderDestinationString)
 
 if ~exist('folderDestinationString','var'); folderDestinationString=folderSourceString; end
+if ~exist('frameRate','var'); frameRate=100; end
 
-datFileName = fullfile(folderSourceString,'data','rawData',[subjectName expDate],[subjectName expDate protocolName '.dat']);
+datFileName = fullfile(folderSourceString,'data','rawData',subjectName,[subjectName expDate],[subjectName expDate protocolName '.dat']);
 
 if ~exist(datFileName,'file')
-    datFileName = fullfile(folderSourceString,'data','rawData',subjectName,[subjectName expDate],[subjectName expDate protocolName '.dat']);
+    datFileName = fullfile(folderSourceString,'data','rawData',[subjectName expDate],[subjectName expDate protocolName '.dat']);
 end
 
 if ~exist(datFileName,'file')

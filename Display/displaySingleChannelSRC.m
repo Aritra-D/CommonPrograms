@@ -259,9 +259,10 @@ uicontrol('Parent',hPlotOptionsPanel,'Unit','Normalized', ...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Get electrode array information
+gridLayout = 6; % 8-channel occipital electrodes
 electrodeGridPos = [staticStartPos panelStartHeight staticPanelWidth panelHeight];
 hElectrodes = showElectrodeLocations(electrodeGridPos,analogChannelsStored(get(hAnalogChannel,'val')), ...
-    colorNames(get(hChooseColor,'val')),[],1,0,gridType,subjectName);
+    colorNames(get(hChooseColor,'val')),[],1,0,gridType,subjectName,gridLayout);
 
 % Main plot handles 
 startXPos = staticStartPos; startYPos = 0.1; 
@@ -314,7 +315,7 @@ uicontrol('Unit','Normalized','Position',[0 0.975 1 0.025],...
 
         yRange = getYLims(plotHandles);
         rescaleData(plotHandles,[xRange yRange]);
-        showElectrodeLocations(electrodeGridPos,channelNumber,plotColor,hElectrodes,holdOnState,0,gridType,subjectName);
+        showElectrodeLocations(electrodeGridPos,channelNumber,plotColor,hElectrodes,holdOnState,0,gridType,subjectName,gridLayout);
         
         showTemporalFreqStim(plotStimHandles,tValsUnique);
         yRange = getYLims(plotStimHandles);
@@ -476,14 +477,14 @@ for i=1:numRows
                 if (j==1)
                     title(plotHandles(i,j),['TF(Hz): ' temporalFreqCellArray(t)],'FontSize',titleFontSize);
                 else
-                    title(plotHandles(i,j),temporalFreqCellArray(t),'FontSize',titleFontSize);
+                    title(plotHandles(i,j),temporalFreqCellArray(t),'FontSize',titleFontSize); hold on; 
                 end
             end
                 
             if (j==numCols)
                 if (i==1)
-                 title(plotHandles(i,j),contrastCellArray(c),'FontSize',titleFontSize,...
-                     'Units','Normalized','Position',[1.25 0.5]);
+                 ylabel(plotHandles(i,j),['CON(%): ' contrastCellArray(c)],'FontSize',titleFontSize,...
+                     'Units','Normalized','Rotation',0,'FontWeight','bold','Position',[1.25 0.5]);
                 else
                     title(plotHandles(i,j),contrastCellArray(c),'FontSize',titleFontSize,...
                      'Units','Normalized','Position',[1.25 0.5]);
