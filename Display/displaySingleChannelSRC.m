@@ -477,7 +477,7 @@ for i=1:numRows
                 if (j==1)
                     title(plotHandles(i,j),['TF(Hz): ' temporalFreqCellArray(t)],'FontSize',titleFontSize);
                 else
-                    title(plotHandles(i,j),temporalFreqCellArray(t),'FontSize',titleFontSize); hold on; 
+                    title(plotHandles(i,j),temporalFreqCellArray(t),'FontSize',titleFontSize); hold(plotHandles(i,j),'on'); 
                 end
             end
                 

@@ -365,7 +365,7 @@ minFixationDurationMS = round((1-header.behaviorSetting.data.fixateJitterPC/100)
 stimDurationMS = header.mapStimDurationMS.data;
 interStimDurationMS = header.mapInterstimDurationMS.data;
 responseTimeMS = header.responseTimeMS.data;
-maxStimPos = ceil(header.maxTargetTimeMS.data + responseTimeMS)/(stimDurationMS+interStimDurationMS) +1;
+maxStimPos = ceil((header.maxTargetTimeMS.data + responseTimeMS)/(stimDurationMS+interStimDurationMS)) +1; % previously the ceiling function was applied only on the numerator which gave a fractional value. 
 
 durationsMS.minFixationDurationMS = minFixationDurationMS;
 durationsMS.interStimDurationMS = interStimDurationMS;
