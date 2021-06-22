@@ -276,8 +276,8 @@ if ~isempty(FsEye)
     eyeDataDegY = eyeData.eyeDataDegY;
     
     if iscell(eyeDataDegX) && iscell(eyeDataDegY)
-    eyeDataDegX = concatenateCellArrayToMatrix(eyeDataDegX)';
-    eyeDataDegY = concatenateCellArrayToMatrix(eyeDataDegY)';
+        eyeDataDegX = concatenateCellArrayToMatrix(eyeDataDegX)';
+        eyeDataDegY = concatenateCellArrayToMatrix(eyeDataDegY)';
     end
     
     eyeData.eyeDataDegX = eyeDataDegX;
@@ -329,4 +329,3 @@ elseif size(vector,1)<numRowsElement
     end
 end
 end
-
