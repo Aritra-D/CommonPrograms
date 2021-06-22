@@ -17,7 +17,7 @@ function getEEGDataBrainProducts(subjectName,expDate,protocolName,folderSourceSt
 fileName = [subjectName expDate protocolName '.vhdr'];
 folderName = fullfile(folderSourceString,'data',subjectName,gridType,expDate,protocolName);
 makeDirectory(folderName);
-folderIn = fullfile(folderSourceString,'data','rawData',[subjectName expDate]);
+folderIn = fullfile(folderSourceString,'rawData',[subjectName expDate]);
 folderExtract = fullfile(folderName,'extractedData');
 makeDirectory(folderExtract);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

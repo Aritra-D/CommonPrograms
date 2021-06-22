@@ -152,7 +152,7 @@ if ~exist('fixationMode','var'); fixationMode = 0; end
 datFileName = fullfile(folderSourceString,'data','rawData',subjectName,[subjectName expDate],[subjectName expDate protocolName '.dat']);
 
 if ~exist(datFileName,'file')
-    datFileName = fullfile(folderSourceString,'data','rawData',[subjectName expDate],[subjectName expDate protocolName '.dat']);
+    datFileName = fullfile(folderSourceString,'rawData',[subjectName expDate],[subjectName expDate protocolName '.dat']);
 end
 
 % Get Lablib data
@@ -355,7 +355,7 @@ intervalTimeMS=1000/FsEye;
 datFileName = fullfile(folderSourceString,'data','rawData',subjectName,[subjectName expDate],[subjectName expDate protocolName '.dat']);
 
 if ~exist(datFileName,'file')
-    datFileName = fullfile(folderSourceString,'data','rawData',[subjectName expDate],[subjectName expDate protocolName '.dat']);
+    datFileName = fullfile(folderSourceString,'rawData',[subjectName expDate],[subjectName expDate protocolName '.dat']);
 end
 
 % Get Lablib data

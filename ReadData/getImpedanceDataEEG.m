@@ -20,7 +20,7 @@ if exist(fileNameSave,'file')
     electrodeNames = e.electrodeNames;
     electrodeImpedances = e.electrodeImpedances;
 else
-    folderNameRawData = fullfile(folderSourceString,'data','rawData',[subjectName expDate]);
+    folderNameRawData = fullfile(folderSourceString,'rawData',[subjectName expDate]);
     filenameImpedance = fullfile(folderNameRawData,[subjectName expDate impedanceTag '.txt']);
     
     % Read BrainAmp impedance values from text file
